@@ -7,6 +7,8 @@ public class Walker : MonoBehaviour
 
     private Vector3 startPosition;
     private bool movingRight = true;
+    
+    public int health = 100;
 
     void Start()
     {
