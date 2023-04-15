@@ -13,7 +13,7 @@ public class bullet : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Enemy")
 		{						
-			collision.gameObject.GetComponent<Walker>().health = collision.gameObject.GetComponent<Walker>().health - 10;
+			collision.gameObject.GetComponent<Walker>().health = collision.gameObject.GetComponent<Walker>().health - 25;
 			if (collision.gameObject.GetComponent<Walker>().health <= 0) {
 				Destroy(collision.gameObject);
 				player.GetComponent<Player>().coins = player.GetComponent<Player>().coins + 5;
