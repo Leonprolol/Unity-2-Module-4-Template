@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float deathDelay = 1.5f;
 
     private bool isAlive = true;
+    
+    public int coins = 0;
 
     
 
