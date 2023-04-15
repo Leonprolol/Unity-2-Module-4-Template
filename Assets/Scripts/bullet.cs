@@ -9,8 +9,8 @@ public class Bullet : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Enemy")
 		{						
-			collision.gameObject.GetComponent<Enemy>().health = collision.gameObject.GetComponent<Enemy>().health - 10;
-			if (collision.gameObject.GetComponent<Enemy>().health <= 0) {
+			collision.gameObject.GetComponent<Enemy>().health = collision.gameObject.GetComponent<Walker>().health - 10;
+			if (collision.gameObject.GetComponent<Walker>().health <= 0) {
 				Destroy(collision.gameObject);
 			}
 		}  
