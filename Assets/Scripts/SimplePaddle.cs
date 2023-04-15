@@ -22,16 +22,16 @@ public class SimplePaddle : MonoBehaviour
         this.transform.position = startPosition + Vector3.right*moveDistance*Mathf.Sin(Time.time * speed);
     }
 
-    private void OnCollisionEnter(Collision other) 
+    private void OnCollisionEnter2D(Collision2D other) 
     {
-        other.rigidbody.AddForce(Vector3.up*launchPower, ForceMode.Impulse);
+        other.rigidbody.AddForce(Vector3.up*launchPower, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionExit(Collision other) 
+    private void OnCollisionExit2D(Collision2D other) 
     {
         float randomAngle = Random.Range(90-launchAngleRange, 90+launchAngleRange) * Mathf.Deg2Rad;
         Debug.Log(randomAngle);
         
-        other.rigidbody.AddForce(new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)), ForceMode.Impulse);
+        other.rigidbody.AddForce(new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)), ForceMode2D.Impulse);
     }
 }
