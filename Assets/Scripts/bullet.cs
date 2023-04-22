@@ -11,6 +11,7 @@ public class bullet : MonoBehaviour
 	}
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		print("hello");
 		if (collision.gameObject.tag == "Enemy")
 		{						
 			collision.gameObject.GetComponent<Walker>().health = collision.gameObject.GetComponent<Walker>().health - 25;
