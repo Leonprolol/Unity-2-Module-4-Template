@@ -22,6 +22,6 @@ public class knifer : MonoBehaviour
 			
 			}
 		}  
-			Destroy(gameObject);
+			
 	}
 }

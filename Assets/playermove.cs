@@ -6,12 +6,14 @@ public class playermove : MonoBehaviour
 {
     private float moveDirection;
     public Rigidbody2D rb;
+    
     private bool facingRight = true;
     private bool isJumping = false;
     public bool onGround = true;
     private bool jumped = false;
     public Animator a;
     public bool canrun = true;
+    
 
     // Start is called before the first frame update
     void Start()

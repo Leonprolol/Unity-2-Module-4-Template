@@ -3,16 +3,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Animator animator;
-    public float deathDelay = 1.5f;
+   // public Animator animator;
+   // public float deathDelay = 1.5f;
 
-    private bool isAlive = true;
+    //private bool isAlive = true;
     
     public int coins = 0;
 
+    void Start() {
+       // animator = GetComponent<Animator>();
+    }
     
-
-    void OnCollisionEnter2D(Collision2D other)
+/*
+void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Enemy") && isAlive)
         {
@@ -21,11 +24,14 @@ public class Player : MonoBehaviour
             this.GetComponent<playermove>().rb.velocity = new Vector2(0,0);
             animator.SetTrigger("Die");
             Invoke("Die", deathDelay);
+            
         }
     }
 
     void Die()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
+*/
+    
 }

@@ -10,7 +10,7 @@ public class scr : MonoBehaviour
     {
     
     }
-    void OnTriggerEnter2D(Collider2D col) {
+    void OnCollisionEnter2D(Collision2D col) {
     if (col.gameObject.GetComponent<playermove>()){
         
         //Destroy(col.gameObject, 1);

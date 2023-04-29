@@ -12,10 +12,11 @@ public class attack : MonoBehaviour
     public float cooldown = 1.5f;
     private bool canAttack = true;
     private bool knife = false;
+    private Animator knifeanimtion;
     // Start is called before the first frame update
     void Start()
     {
-    
+        knifeanimtion = knifeReal.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class attack : MonoBehaviour
             knife = true;
                 knifeReal.SetActive(true);
             gun.SetActive(false);
+            knifeanimtion.SetBool("swinging", true);
          }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)){
