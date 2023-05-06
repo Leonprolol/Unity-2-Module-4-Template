@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class attack : MonoBehaviour
 {
     public GameObject bullet;
@@ -13,6 +13,7 @@ public class attack : MonoBehaviour
     private bool canAttack = true;
     private bool knife = false;
     private Animator knifeanimtion;
+    public GameObject ammoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +46,7 @@ public class attack : MonoBehaviour
             GameObject bulletClone = Instantiate(bullet, firepoint.transform.position, Quaternion.identity); 
             bulletClone.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0)*100;
             ammo = ammo-1;
+            ammoText.GetComponent<TextMeshProUGUI>().text = "Ammo:" + ammo.ToString();
             canAttack = false;
             StartCoroutine(attackcooldown());
             }
