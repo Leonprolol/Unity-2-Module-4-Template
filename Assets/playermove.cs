@@ -16,6 +16,7 @@ public class playermove : MonoBehaviour
     
     public int coins = 10;
     
+
     public List<string> weapons;
     
     
