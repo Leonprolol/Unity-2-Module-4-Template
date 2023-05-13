@@ -14,6 +14,8 @@ public class playermove : MonoBehaviour
     public Animator a;
     public bool canrun = true;
     
+    public int coins = 10;
+    
 
     // Start is called before the first frame update
     void Start()
