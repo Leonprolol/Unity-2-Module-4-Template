@@ -16,7 +16,7 @@ public class playermove : MonoBehaviour
     
     public int coins = 10;
     
-    public String[] weapons = {"Pistol", "Machinegun", "Rifle", "Shotgun"};
+    public List<string> weapons = {"Pistol", "Machinegun", "Rifle", "Shotgun"};
     
     
 
