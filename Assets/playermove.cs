@@ -16,13 +16,14 @@ public class playermove : MonoBehaviour
     
     public int coins = 10;
     
-    public String[] weapons = {"Pistol", "Machinegun", "Rifle", "Shotgun"};
+    public List<string> weapons;
     
     
 
     // Start is called before the first frame update
     void Start()
     {
+        weapons.Add("Pistol");
         rb = GetComponent<Rigidbody2D>();
         a = GetComponent<Animator>();
     }
