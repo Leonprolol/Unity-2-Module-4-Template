@@ -16,6 +16,9 @@ public class playermove : MonoBehaviour
     
     public int coins = 10;
     
+    public String[] weapons = {"Pistol", "Machinegun", "Rifle", "Shotgun"};
+    
+    
 
     // Start is called before the first frame update
     void Start()
