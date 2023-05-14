@@ -14,10 +14,13 @@ public class attack : MonoBehaviour
     private bool knife = false;
     private Animator knifeanimtion;
     public GameObject ammoText;
+    public Animator a;
+
     // Start is called before the first frame update
     void Start()
     {
         knifeanimtion = knifeReal.GetComponent<Animator>();
+        a = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class attack : MonoBehaviour
         else {
          
             if (ammo > 0 && canAttack == true) {
+            a.Play("fire");
             GameObject bulletClone = Instantiate(bullet, firepoint.transform.position, Quaternion.identity); 
             bulletClone.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0)*100;
             ammo = ammo-1;
