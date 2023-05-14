@@ -28,7 +28,9 @@ public class knifer : MonoBehaviour
 	public void changePosition() {
 		transform.position = new Vector3(0,0,0);
 	}
-	void update(){
+	void Update(){
+		print("hi");
+		print(pos);
 		if (pos == 1) {
 			transform.position = new Vector3(-0.12f, 0.07f, -0.03f);
 			transform.rotation = new Quaternion(-3.504f, 1.463f, -89.31f, 1);
