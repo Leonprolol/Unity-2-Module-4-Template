@@ -5,6 +5,7 @@ using UnityEngine;
 public class knifer : MonoBehaviour
 {
 	private GameObject player;
+	public int pos = 0;
 	void Start() {
 		player = GameObject.Find("Player");
 		
@@ -23,5 +24,17 @@ public class knifer : MonoBehaviour
 			}
 		}  
 			
+	}
+	public void changePosition() {
+		transform.position = new Vector3(0,0,0);
+	}
+	void update(){
+		if (pos == 1) {
+			transform.position = new Vector3(-0.12f, 0.07f, -0.03f);
+			transform.rotation = new Quaternion(-3.504f, 1.463f, -89.31f, 1);
+		}
+		else {
+			
+		}
 	}
 }

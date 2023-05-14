@@ -18,15 +18,19 @@ public class playermove : MonoBehaviour
     
 
     public List<string> weapons;
-    
-    
+    /*
 
+    here i am giving you the solution , First make an empty game object , 
+    then add the player sprite as a child .
+Add all the rigidbodies and the Box colliders to the empty game object .
+Also add the player control script to the empty game object
+now run the animation , will solve your problem
+*/
     // Start is called before the first frame update
     void Start()
     {
         weapons.Add("Pistol");
         rb = GetComponent<Rigidbody2D>();
-        a = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,7 +46,8 @@ public class playermove : MonoBehaviour
             else if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)){
                 transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             }
-            if (moveDirection != 0) {
+            print(moveDirection);
+            if (moveDirection > 0.4 || moveDirection < -0.4) {
                 a.SetBool("is running", true);
             }
             else
@@ -52,6 +57,7 @@ public class playermove : MonoBehaviour
             Vector2 movement = new Vector2(moveDirection * 6, rb.velocity.y);
             rb.velocity = movement;
             print(onGround);
+        
             if (Input.GetKeyDown(KeyCode.Space)&& onGround == true && jumped == false)
             {
                 rb.AddForce(new Vector2(0f,100f));
