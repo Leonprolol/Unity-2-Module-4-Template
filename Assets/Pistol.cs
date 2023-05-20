@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Pistol : Gun
 {
-    public float damage = 3f;
-    public float fireRate = 30;
-    public int ammo = 30;
-    public bool spread;
+
     // Start is called before the first frame update
     void Start()
     {

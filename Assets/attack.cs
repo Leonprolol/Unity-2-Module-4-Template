@@ -12,7 +12,7 @@ public class attack : MonoBehaviour
     
     private int currentWeapon;
 
-    private List<Gun> weapons;
+    //private List<Gun> weapons;
 
     public int ammo = 100;
     public float cooldown = 1.5f;
@@ -27,16 +27,16 @@ public class attack : MonoBehaviour
     {
         knifeanimtion = knifeReal.GetComponent<Animator>();
         a = GetComponent<Animator>();
-        Shotgun shot = new Shotgun();
-        Pistol pistol = new Pistol();
-        Machinegun machinegun = new Machinegun();
-        Sniper sniper = new Sniper();
+        // Shotgun shot = new Shotgun();
+        // Pistol pistol = new Pistol();
+        // Machinegun machinegun = new Machinegun();
+        // Sniper sniper = new Sniper();
 
-        currentWeapon = 0;
-        weapons.Add(shot);
-        weapons.Add(pistol);
-        weapons.Add(machinegun);
-        weapons.Add(sniper);
+        currentWeapon = 1;
+        // weapons.Add(shot);
+        // weapons.Add(pistol);
+        // weapons.Add(machinegun);
+        // weapons.Add(sniper);
     }
 
     // Update is called once per frame
@@ -62,12 +62,13 @@ public class attack : MonoBehaviour
         else {
          
             if (ammo > 0 && canAttack == true) {
+            //Debug.Break();
             a.Play("fire");
             GameObject bulletClone = Instantiate(bullet, firepoint.transform.position, Quaternion.identity); 
             //weapons[currentWeapon].damage;
-            bulletClone.GetComponent<bullet>().setDamage(weapons[currentWeapon].damage);
-            
-            bulletClone.GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x, 0)*100;
+           // bulletClone.GetComponent<bullet>().setDamage(weapons[currentWeapon].damage);
+
+          
             ammo = ammo-1;
             ammoText.GetComponent<TextMeshProUGUI>().text = "Ammo:" + ammo.ToString();
             canAttack = false;

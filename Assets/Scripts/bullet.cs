@@ -6,10 +6,12 @@ public class bullet : MonoBehaviour
 {
 	private GameObject player;
 	private bool spread = false;
-
+	private Rigidbody2D rb;
 
 	private float damage = 0f;
 	void Start() {
+    	rb.AddForce(transform.up * 1000, ForceMode2D.Impulse);
+
 		player = GameObject.Find("Player");
 		
 	}
@@ -41,6 +43,6 @@ public class bullet : MonoBehaviour
 			
 			}
 		}  
-			Destroy(gameObject);
+			//Destroy(gameObject);
 	}
 }
