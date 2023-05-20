@@ -7,13 +7,16 @@ public class bullet : MonoBehaviour
 	private GameObject player;
 	private bool spread = false;
 	private Rigidbody2D rb;
+	private GameObject firepoint;
 
 	private float damage = 0f;
 	void Start() {
-    	rb.AddForce(transform.up * 1000, ForceMode2D.Impulse);
+		rb = GetComponent<Rigidbody2D>();
+		firepoint = GameObject.Find("firepoint");
 
 		player = GameObject.Find("Player");
-		
+		//rb.AddForce(firepoint.transform.forward * 500, ForceMode2D.Impulse);
+ 		rb.velocity = new Vector2(firepoint.transform.localScale.x, 0)*15;
 	}
 	public void setDamage(float newDam) {
 		damage = newDam;
@@ -43,6 +46,6 @@ public class bullet : MonoBehaviour
 			
 			}
 		}  
-			//Destroy(gameObject);
+			Destroy(gameObject);
 	}
 }

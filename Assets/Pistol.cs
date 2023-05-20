@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Pistol", order = 1)]
 
-public class Pistol : Gun
+public class Pistol : Gunner
 {
+
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
