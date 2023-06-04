@@ -22,16 +22,16 @@ public class Shop : MonoBehaviour
             
         }
     }
-     void buypistol()
+    void buypistol()
     {
     }
-      void buymachinegun()
+    void buymachinegun()
     {
         if (player.GetComponent<playermove>().coins >= 150){
             
         }
     }
-      void buyrifle()
+    void buyrifle()
     {
         if (player.GetComponent<playermove>().coins >= 100){
             
