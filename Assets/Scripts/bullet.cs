@@ -42,7 +42,7 @@ public class bullet : MonoBehaviour
 			collision.gameObject.GetComponent<Walker>().health = collision.gameObject.GetComponent<Walker>().health - (int)damage;
 			if (collision.gameObject.GetComponent<Walker>().health <= 0) {
 				Destroy(collision.gameObject);
-				player.GetComponent<Player>().coins = player.GetComponent<Player>().coins + 5;
+				player.GetComponent<playermove>().coins += 5;
 			
 			}
 		}  

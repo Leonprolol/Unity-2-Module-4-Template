@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 
 public class Player : MonoBehaviour
@@ -7,11 +9,15 @@ public class Player : MonoBehaviour
    // public float deathDelay = 1.5f;
 
     //private bool isAlive = true;
-    
+    public TextMeshProUGUI coinText;
     public int coins = 0;
 
     void Start() {
        // animator = GetComponent<Animator>();
+    }
+
+    void Update() {
+        coinText.text = coins.ToString();
     }
     
 /*

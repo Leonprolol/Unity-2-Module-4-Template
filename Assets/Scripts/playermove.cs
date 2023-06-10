@@ -1,6 +1,8 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class playermove : MonoBehaviour
 {
@@ -17,7 +19,8 @@ public class playermove : MonoBehaviour
     private bool shopOn = false;
     
     public int coins = 10;
-    
+    public TextMeshProUGUI coinText;
+
 
     public List<string> weapons;
     /*
@@ -70,6 +73,8 @@ now run the animation , will solve your problem
             }
                 StartCoroutine(jumpCool());
             }
+            coinText.text = "Coins " + coins.ToString();
+
      }                                                                        
 
     IEnumerator jumpCool() {

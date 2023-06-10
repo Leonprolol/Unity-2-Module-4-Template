@@ -99,7 +99,8 @@ MonoBehaviour:
   a: {fileID: 1122085226575614435}
   canrun: 1
   shop: {fileID: 0}
-  coins: 10
+  coins: 1000
+  coinText: {fileID: 0}
   weapons: []
 --- !u!1 &1122085226575614440
 GameObject:
@@ -235,6 +236,9 @@ MonoBehaviour:
   ShotgunObj: {fileID: 1122085228276044324}
   SniperObj: {fileID: 1122085227637095100}
   MachinegunObj: {fileID: 1122085228129982289}
+  machinegun: 0
+  shotgun: 0
+  sniper: 0
   ammo: 100
   cooldown: 1.5
   ammoText: {fileID: 0}
@@ -251,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fa877ef5a674aac99191e2c2c53bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinText: {fileID: 0}
   coins: 0
 --- !u!1 &1122085226631892197
 GameObject:

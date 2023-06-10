@@ -14,6 +14,12 @@ public class attack : MonoBehaviour
     public GameObject MachinegunObj;
 
 
+    public bool machinegun = false;
+    public bool shotgun = false;
+    public bool sniper = false;
+
+
+
 
     
     private int currentWeapon = 0;
@@ -53,9 +59,8 @@ public class attack : MonoBehaviour
             knife = true;
             knifeReal.SetActive(true);
             gun.SetActive(false);
-            knifeanimtion.SetBool("swinging", true);
         }
-
+        
         if (Input.GetKeyDown(KeyCode.Alpha2)){
             knife = false;
             gun.SetActive(false);
@@ -66,7 +71,7 @@ public class attack : MonoBehaviour
             gun.SetActive(true);
         }
          
-        if (Input.GetKeyDown(KeyCode.Alpha3)){
+        if (Input.GetKeyDown(KeyCode.Alpha3) && shotgun){
             knife = false;
             gun.SetActive(false);
 
@@ -76,7 +81,7 @@ public class attack : MonoBehaviour
             gun.SetActive(true);
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha4)){
+        if (Input.GetKeyDown(KeyCode.Alpha4) && sniper){
             knife = false;
             gun.SetActive(false);
 
@@ -85,7 +90,7 @@ public class attack : MonoBehaviour
             currentWeapon = 2;
             gun.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha5)){
+        if (Input.GetKeyDown(KeyCode.Alpha5) && machinegun){
             knife = false;
             gun.SetActive(false);
 
@@ -96,7 +101,8 @@ public class attack : MonoBehaviour
         }
      if (Input.GetMouseButtonDown(0)){
         if (knife == true) {
-        
+            a.Play("Stab");
+
         }
         else {
          

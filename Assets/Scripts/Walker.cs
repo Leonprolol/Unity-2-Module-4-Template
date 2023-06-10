@@ -1,4 +1,7 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Walker : MonoBehaviour
 {
@@ -9,6 +12,8 @@ public class Walker : MonoBehaviour
     private bool movingRight = true;
     
     public int health = 100;
+
+    
 
     void Start()
     {
@@ -28,5 +33,22 @@ public class Walker : MonoBehaviour
             movingRight = !movingRight;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }
+    }
+    SpriteRenderer m_SpriteRenderer;
+    void OnCollisionEnter2D(Collision2D collision)
+	{
+		
+		if (collision.gameObject.tag == "Bullet")
+		{	
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            //Set the GameObject's Color quickly to a set Color (blue)
+            m_SpriteRenderer.color = Color.red;
+            StartCoroutine(red());
+		}  
+	}
+
+    IEnumerator red() {
+        yield return new WaitForSeconds(0.25f);
+        m_SpriteRenderer.color = Color.white;
     }
 }
