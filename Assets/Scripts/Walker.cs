@@ -7,16 +7,18 @@ public class Walker : MonoBehaviour
 {
     public float speed = 2f;
     public float distance = 5f;
-
+    private GameObject Player;
     private Vector3 startPosition;
     private bool movingRight = true;
     
-    public int health = 100;
+    public float health = 100;
 
     
 
     void Start()
     {
+        Player = GameObject.Find("Player");
+
         startPosition = transform.position;
     }
 
@@ -35,16 +37,24 @@ public class Walker : MonoBehaviour
         }
     }
     SpriteRenderer m_SpriteRenderer;
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
 	{
 		
 		if (collision.gameObject.tag == "Bullet")
 		{	
+            health = health - collision.gameObject.GetComponent<bullet>().damage;
+            if (health <= 0) {
+                Player.GetComponent<playermove>().coins += 5;
+
+                Destroy(gameObject);
+            }
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             //Set the GameObject's Color quickly to a set Color (blue)
             m_SpriteRenderer.color = Color.red;
             StartCoroutine(red());
 		}  
+        Destroy(collision.gameObject);
+
 	}
 
     IEnumerator red() {

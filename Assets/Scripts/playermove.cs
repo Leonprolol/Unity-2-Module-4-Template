@@ -79,7 +79,7 @@ now run the animation , will solve your problem
 
     IEnumerator jumpCool() {
          jumped = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         a.SetBool("is falling", true);
         jumped = false;
         //yield return new WaitForSeconds(0.5f); //half a second

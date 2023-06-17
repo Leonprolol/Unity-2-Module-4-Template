@@ -9,14 +9,15 @@ public class bullet : MonoBehaviour
 	private Rigidbody2D rb;
 	private GameObject firepoint;
 
-	private float damage = 0f;
+	public float damage = 0f;
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		firepoint = GameObject.Find("firepoint");
 
 		player = GameObject.Find("Player");
-		//rb.AddForce(firepoint.transform.forward * 500, ForceMode2D.Impulse);
- 		rb.velocity = new Vector2(firepoint.transform.localScale.x, 0)*15;
+		rb.AddForce(firepoint.transform.forward * 10000, ForceMode2D.Impulse);
+ 		//rb.velocity = new Vector2(firepoint.transform.forward.x, 0)*500;
+
 	}
 	public void setDamage(float newDam) {
 		damage = newDam;
@@ -33,19 +34,9 @@ public class bullet : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
-		print("hello");
-		if (collision.gameObject.tag == "Enemy")
-		{	
-			print("sussy baka");					
-			collision.gameObject.GetComponent<Walker>().health = collision.gameObject.GetComponent<Walker>().health - (int)damage;
-			if (collision.gameObject.GetComponent<Walker>().health <= 0) {
-				Destroy(collision.gameObject);
-				player.GetComponent<playermove>().coins += 5;
-			
-			}
-		}  
-			Destroy(gameObject);
+		Destroy(gameObject);
 	}
+	
 }

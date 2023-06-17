@@ -856,7 +856,9 @@ MonoBehaviour:
   onGround: 1
   a: {fileID: 0}
   canrun: 1
+  shop: {fileID: 0}
   coins: 10
+  coinText: {fileID: 0}
   weapons:
   - Pistol
   - Machinegun
@@ -1026,9 +1028,17 @@ MonoBehaviour:
   firepoint: {fileID: 58859852}
   gun: {fileID: 1059073293}
   knifeReal: {fileID: 2051725653}
+  PistolObj: {fileID: 0}
+  ShotgunObj: {fileID: 0}
+  SniperObj: {fileID: 0}
+  MachinegunObj: {fileID: 0}
+  machinegun: 0
+  shotgun: 0
+  sniper: 0
   ammo: 100
   cooldown: 1.5
   ammoText: {fileID: 316778564}
+  a: {fileID: 0}
 --- !u!114 &559726238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1041,6 +1051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fa877ef5a674aac99191e2c2c53bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinText: {fileID: 0}
   coins: 0
 --- !u!1 &607862154
 GameObject:
@@ -10177,7 +10188,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -10797,7 +10808,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13822,16 +13833,16 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 177
     m_Data: {fileID: 21300000, guid: 56fc46683c29d44e9a25e694f66ca448, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 0a0ba56a8ba484bfbbdae0b36ec79a9b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 00d57e0cf6e0f40eeb3a53fa938d7492, type: 3}
   - m_RefCount: 13
     m_Data: {fileID: 21300000, guid: b982a65781d004440aee06925d6e756e, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 21300000, guid: 67ef33f96aa27420f89f7f7d35101f8c, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 00d57e0cf6e0f40eeb3a53fa938d7492, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 523f56f063904491eb78f7d8796a4b4b, type: 3}
   - m_RefCount: 170
@@ -14497,9 +14508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3ffa293974b47d09dc5b003df34ba4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 13
-  MoveSpeed: 3
-  jumpPower: 10
 --- !u!50 &1243332625
 Rigidbody2D:
   serializedVersion: 4
@@ -17043,6 +17051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a482328fcbc4b1995966d889c92cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: 0
 --- !u!61 &2051725657
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17183,7 +17192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2090397140
 MonoBehaviour:
   m_ObjectHideFlags: 0
