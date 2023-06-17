@@ -12011,7 +12011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1122085226495559757, guid: cdbb93b88da304637a181c3ec0704903, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 98.6
+      value: 30.95
       objectReference: {fileID: 0}
     - target: {fileID: 1122085226495559757, guid: cdbb93b88da304637a181c3ec0704903, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12245,6 +12245,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2653356963862667740, guid: 68c9c1b462b75d34fb075209b0dba97b, type: 3}
+      propertyPath: jumpPower
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7447864942538465867, guid: 68c9c1b462b75d34fb075209b0dba97b, type: 3}
       propertyPath: m_Name
       value: idle_1
