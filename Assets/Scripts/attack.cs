@@ -7,7 +7,7 @@ public class attack : MonoBehaviour
     public GameObject bullet;
     public GameObject firepoint;
     public GameObject gun;
-    public GameObject knifeReal;
+    //public GameObject knifeReal;
     public GameObject PistolObj;
     public GameObject ShotgunObj;
     public GameObject SniperObj;
@@ -29,7 +29,7 @@ public class attack : MonoBehaviour
     public int ammo = 100;
     public float cooldown = 1.5f;
     private bool canAttack = true;
-    private bool knife = true;
+    private bool knife = false;
     private Animator knifeanimtion;
     public GameObject ammoText;
     public Animator a;
@@ -38,7 +38,7 @@ public class attack : MonoBehaviour
     void Start()
     {
         weapons = new List<Gunner>();
-        knifeanimtion = knifeReal.GetComponent<Animator>();
+        //knifeanimtion = knifeReal.GetComponent<Animator>();
         a = GetComponent<Animator>();
         Shotgun shot = new Shotgun();
         Pistol pistol = new Pistol();
@@ -56,26 +56,26 @@ public class attack : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha1)){
-            knife = true;
-            knifeReal.SetActive(true);
+          //  knife = true;
+            //knifeReal.SetActive(true);
             gun.SetActive(false);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha2)){
-            knife = false;
+            //knife = false;
             gun.SetActive(false);
 
-            knifeReal.SetActive(false);
+            //knifeReal.SetActive(false);
             gun = PistolObj;
             currentWeapon = 0;
             gun.SetActive(true);
         }
          
         if (Input.GetKeyDown(KeyCode.Alpha3) && shotgun){
-            knife = false;
+            //knife = false;
             gun.SetActive(false);
 
-            knifeReal.SetActive(false);
+           // knifeReal.SetActive(false);
             gun = ShotgunObj;
             currentWeapon = 1;
             gun.SetActive(true);
@@ -85,23 +85,23 @@ public class attack : MonoBehaviour
             knife = false;
             gun.SetActive(false);
 
-            knifeReal.SetActive(false);
+            //knifeReal.SetActive(false);
             gun = SniperObj;
             currentWeapon = 2;
             gun.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha5) && machinegun){
-            knife = false;
+            //knife = false;
             gun.SetActive(false);
 
-            knifeReal.SetActive(false);
+            //knifeReal.SetActive(false);
             gun = MachinegunObj;
             currentWeapon = 3;
             gun.SetActive(true);
         }
      if (Input.GetMouseButtonDown(0)){
         if (knife == true) {
-            a.Play("Stab");
+           // a.Play("Stab");
 
         }
         else {

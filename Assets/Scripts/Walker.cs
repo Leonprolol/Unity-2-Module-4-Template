@@ -12,7 +12,7 @@ public class Walker : MonoBehaviour
     private bool movingRight = true;
     
     public float health = 100;
-
+    public Transform healthbar;
     
 
     void Start()
@@ -34,6 +34,7 @@ public class Walker : MonoBehaviour
         {
             movingRight = !movingRight;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            healthbar.localScale = new Vector3(-healthbar.localScale.x, healthbar.localScale.y, healthbar.localScale.z);
         }
     }
     SpriteRenderer m_SpriteRenderer;
@@ -43,6 +44,13 @@ public class Walker : MonoBehaviour
 		if (collision.gameObject.tag == "Bullet")
 		{	
             health = health - collision.gameObject.GetComponent<bullet>().damage;
+            if(movingRight){
+                healthbar.position = new Vector3(healthbar.position.x-0.15f, healthbar.position.y,healthbar.position.z);
+            }
+            else{
+                healthbar.position = new Vector3(healthbar.position.x+0.15f, healthbar.position.y,healthbar.position.z);
+            }
+           
             if (health <= 0) {
                 Player.GetComponent<playermove>().coins += 5;
 

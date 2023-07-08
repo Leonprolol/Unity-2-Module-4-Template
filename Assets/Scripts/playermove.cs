@@ -70,9 +70,9 @@ now run the animation , will solve your problem
             {
                 rb.AddForce(new Vector2(0f,100f));
                  a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
-            }
                 StartCoroutine(jumpCool());
             }
+        }
             coinText.text = "Coins " + coins.ToString();
 
      }                                                                        
