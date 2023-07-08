@@ -69,13 +69,14 @@ now run the animation , will solve your problem
             if (Input.GetKeyDown(KeyCode.Space)&& onGround == true && jumped == false)
             {
                 rb.AddForce(new Vector2(0f,100f));
-                 a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
+               //  a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
                 StartCoroutine(jumpCool());
              }
              
             }
-        }
+        
             coinText.text = "Coins " + coins.ToString();
+            Falling();
       
      }              
 
@@ -115,19 +116,19 @@ now run the animation , will solve your problem
         //call idle a.s
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
+    public void OnCollisionEnter2D(Collision2D col) {
         
     }
 
-    private void OnCollisionStay2D(Collision2D col) {
+    public void OnCollisionStay2D(Collision2D col) {
        
     }
 
-    private void OnCollisionExit2D(Collision2D col) {
+    public void OnCollisionExit2D(Collision2D col) {
     
     }
 
-    private void OnTriggerEnter2D(Collider2D col) {
+    public void OnTriggerEnter2D(Collider2D col) {
         print("Hello");
         if (col.gameObject.tag == "Ground") 
         {
@@ -135,7 +136,7 @@ now run the animation , will solve your problem
         }
     }
 
-    private void OnTriggerStay2D(Collider2D col) {
+    public void OnTriggerStay2D(Collider2D col) {
         print("Hello");
         if (col.gameObject.tag == "Ground") 
         {
@@ -143,7 +144,7 @@ now run the animation , will solve your problem
         }
     }
 
-    private void OnTriggerExit2D(Collider2D col) {
+    public void OnTriggerExit2D(Collider2D col) {
         print("GOODBYEZ");
     if (col.gameObject.tag == "Ground") 
         {

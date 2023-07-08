@@ -13,6 +13,8 @@ public class attack : MonoBehaviour
     public GameObject SniperObj;
     public GameObject MachinegunObj;
 
+    public Transform square;
+
 
     public bool machinegun = false;
     public bool shotgun = false;
@@ -44,7 +46,7 @@ public class attack : MonoBehaviour
         Pistol pistol = new Pistol();
         Machinegun machinegun = new Machinegun();
         Sniper sniper = new Sniper();
-
+        pistol.damage = 20;
         weapons.Add(shot);
         weapons.Add(pistol);
         weapons.Add(machinegun);
@@ -59,6 +61,12 @@ public class attack : MonoBehaviour
           //  knife = true;
             //knifeReal.SetActive(true);
             gun.SetActive(false);
+        }
+        if (Input.GetMouseButton(1)){
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            square.position = new Vector3(worldPosition.x, worldPosition.y, 1);
+            print(worldPosition.x);
+            print(worldPosition.y);
         }
         
         if (Input.GetKeyDown(KeyCode.Alpha2)){

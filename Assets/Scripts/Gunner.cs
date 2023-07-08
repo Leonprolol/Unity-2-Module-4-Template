@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gunner : MonoBehaviour
 {
     public int ammo = 30;
-    public int damage = 5;
+    public int damage = 20;
     public bool spread = false;
     public float cooldown = 1.0f;
     // Start is called before the first frame update
