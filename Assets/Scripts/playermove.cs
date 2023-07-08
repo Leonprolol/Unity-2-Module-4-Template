@@ -50,11 +50,11 @@ now run the animation , will solve your problem
             }
             moveDirection = Input.GetAxis("Horizontal");
             if (Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.LeftArrow) ) {
-
-                transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        
+                transform.GetChild(0).localScale = new Vector3(-0.75f, 0.75f, 1f);
             }
             else if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)){
-                transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
+                transform.GetChild(0).localScale = new Vector3(0.75f, 0.75f, 1f);
             }
             if (moveDirection > 0.4 || moveDirection < -0.4) {
                 a.SetBool("is running", true);
@@ -69,35 +69,88 @@ now run the animation , will solve your problem
             if (Input.GetKeyDown(KeyCode.Space)&& onGround == true && jumped == false)
             {
                 rb.AddForce(new Vector2(0f,100f));
-                 a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
-            
+               //  a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
                 StartCoroutine(jumpCool());
              }
+             
             }
+            Falling();
             coinText.text = "Coins " + coins.ToString();
       
-     }                                                                        
+     }              
+
+
+    void Falling()
+    {
+        //GetComponent<BoxCollider2D>().IsTouchingLayers(LayerMask.GetMask("Ground"))
+        if (onGround) {
+            a.SetBool("is jumping", false);
+            a.SetBool("is falling", false);
+            return;
+        }
+        else {
+            a.SetBool("is running", false);
+        }
+        //bool playerHasVerticalSpeed = Math.Abs(playerRigidbody.velocity.y) > Mathf.Epsilon;
+        if (rb.velocity.y >= 0)
+        {
+            //a.SetBool("isJumping", playerHasVerticalSpeed);
+            a.SetBool("is jumping", false);
+            a.SetBool("is jumping", true);
+           
+        } else
+        {
+            a.SetBool("is jumping", false);
+            a.SetBool("is falling", true);
+            //.SetBool("isLanding", playerHasVerticalSpeed); 
+        }   
+        
+    }                                                          
 
     IEnumerator jumpCool() {
          jumped = true;
         yield return new WaitForSeconds(0.25f);
-        a.SetBool("is falling", true);
         jumped = false;
         //yield return new WaitForSeconds(0.5f); //half a second
         //call idle a.s
     }
+
+    private void OnCollisionEnter2D(Collision2D col) {
+        
+    }
+
     private void OnCollisionStay2D(Collision2D col) {
+       
+    }
+
+    private void OnCollisionExit2D(Collision2D col) {
+    
+    }
+
+    private void OnTriggerEnter2D(Collider2D col) {
+        print("Hello");
         if (col.gameObject.tag == "Ground") 
         {
             onGround = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D col) {
+    private void OnTriggerStay2D(Collider2D col) {
+        print("Hello");
+        if (col.gameObject.tag == "Ground") 
+        {
+            onGround = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col) {
+        print("GOODBYEZ");
     if (col.gameObject.tag == "Ground") 
         {
             onGround = false;
         }
     }
+
+
 }
 
