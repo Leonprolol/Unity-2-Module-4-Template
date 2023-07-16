@@ -461,6 +461,14 @@ PrefabInstance:
       value: WalkingEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 5447542093112921701, guid: 71ff24ba5fa414dfe8b077c308ca9f9f, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447542093112921701, guid: 71ff24ba5fa414dfe8b077c308ca9f9f, type: 3}
+      propertyPath: distance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447542093112921701, guid: 71ff24ba5fa414dfe8b077c308ca9f9f, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1682674709}

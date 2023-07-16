@@ -12,7 +12,7 @@ public class attack : MonoBehaviour
     public GameObject ShotgunObj;
     public GameObject SniperObj;
     public GameObject MachinegunObj;
-
+    private Vector3 directions;
     public Transform square;
 
 
@@ -63,12 +63,16 @@ public class attack : MonoBehaviour
             gun.SetActive(false);
         }
         if (Input.GetMouseButton(1)){
+            square.gameObject.SetActive(true);
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             square.position = new Vector3(worldPosition.x, worldPosition.y, 1);
-            print(worldPosition.x);
-            print(worldPosition.y);
+            directions = square.position-firepoint.transform.position;
+            
         }
-        
+        else{
+            square.gameObject.SetActive(false);
+            directions = firepoint.transform.forward;
+        }
         if (Input.GetKeyDown(KeyCode.Alpha2)){
             //knife = false;
             gun.SetActive(false);
@@ -118,6 +122,7 @@ public class attack : MonoBehaviour
             //Debug.Break();
             a.Play("fire");
             GameObject bulletClone = Instantiate(bullet, firepoint.transform.position, Quaternion.identity); 
+            bulletClone.GetComponent<bullet>().directions = directions;
             //weapons[currentWeapon].damage;
             bulletClone.GetComponent<bullet>().setDamage(gun.GetComponent<Gunner>().damage);
 

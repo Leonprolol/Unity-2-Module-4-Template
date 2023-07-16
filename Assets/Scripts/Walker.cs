@@ -45,10 +45,10 @@ public class Walker : MonoBehaviour
 		{	
             health = health - collision.gameObject.GetComponent<bullet>().damage;
             if(movingRight){
-                healthbar.position = new Vector3(healthbar.position.x-0.15f, healthbar.position.y,healthbar.position.z);
+                healthbar.position = new Vector3(healthbar.position.x-0.50f, healthbar.position.y,healthbar.position.z);
             }
             else{
-                healthbar.position = new Vector3(healthbar.position.x+0.15f, healthbar.position.y,healthbar.position.z);
+                healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
             }
            
             if (health <= 0) {
