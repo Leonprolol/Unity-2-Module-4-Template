@@ -8,13 +8,13 @@ public class bullet : MonoBehaviour
 	private bool spread = false;
 	private Rigidbody2D rb;
 	private GameObject firepoint;
-	public Vector3 directions;
+	
 
 	public float damage = 0f;
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		firepoint = GameObject.Find("firepoint");
-		print(directions);
+	
 
 		player = GameObject.Find("Player");
 		
@@ -28,16 +28,13 @@ public class bullet : MonoBehaviour
 	public void setSpread() {
 		spread = true;
 	}
-	
-	void Update() {
-		rb.AddForce(directions.normalized * 10, ForceMode2D.Impulse);
-		
-		if (spread){
-			//create two new bullets going in diff directions
-			spread = false;
-		}
-	}
 
+	public void fire(Vector3 direction){
+		print(direction);
+		print(direction.normalized);
+		GetComponent<Rigidbody2D>().velocity = direction.normalized *50;
+	}
+	
 	void OnTriggerEnter2D(Collider2D collision)
 	{
 		Destroy(gameObject);

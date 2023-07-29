@@ -49,6 +49,7 @@ now run the animation , will solve your problem
                 shop.SetActive(shopOn);
             }
             moveDirection = Input.GetAxis("Horizontal");
+            print(moveDirection);
             if (Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.LeftArrow) ) {
         
                 transform.GetChild(0).localScale = new Vector3(-0.75f, 0.75f, 1f);

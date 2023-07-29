@@ -35,6 +35,7 @@ public class attack : MonoBehaviour
     private Animator knifeanimtion;
     public GameObject ammoText;
     public Animator a;
+    //public SpriteRenderer spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -56,23 +57,36 @@ public class attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        square.gameObject.SetActive(true);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        square.position = new Vector3(worldPosition.x, worldPosition.y, 1);
+        directions = square.position-firepoint.transform.position;
+        
 
+       
+        //worldPosition.z = 0f; // Assuming your character is on the 2D plane (z = 0)
+
+        // Compare the character's position with the mouse position to determine the direction
+        //Vector3 characterPosition = transform.position; 
+        /*
+        Vector3 direction = worldPosition - transform.parent.position;
+
+        // Flip the character's sprite accordingly
+        if (direction.x > 0f)
+        {
+            spriteRenderer.flipX = false; // Face right (no flip)
+        }
+        else if (direction.x < 0f)
+        {
+            spriteRenderer.flipX = true; // Face left (flip the sprite horizontally)
+        }
+        */
         if (Input.GetKeyDown(KeyCode.Alpha1)){
           //  knife = true;
             //knifeReal.SetActive(true);
             gun.SetActive(false);
         }
-        if (Input.GetMouseButton(1)){
-            square.gameObject.SetActive(true);
-            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            square.position = new Vector3(worldPosition.x, worldPosition.y, 1);
-            directions = square.position-firepoint.transform.position;
-            
-        }
-        else{
-            square.gameObject.SetActive(false);
-            directions = firepoint.transform.forward;
-        }
+        
         if (Input.GetKeyDown(KeyCode.Alpha2)){
             //knife = false;
             gun.SetActive(false);
@@ -122,7 +136,8 @@ public class attack : MonoBehaviour
             //Debug.Break();
             a.Play("fire");
             GameObject bulletClone = Instantiate(bullet, firepoint.transform.position, Quaternion.identity); 
-            bulletClone.GetComponent<bullet>().directions = directions;
+            bulletClone.GetComponent<bullet>().fire(directions);
+            
             //weapons[currentWeapon].damage;
             bulletClone.GetComponent<bullet>().setDamage(gun.GetComponent<Gunner>().damage);
 

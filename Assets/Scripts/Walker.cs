@@ -43,12 +43,15 @@ public class Walker : MonoBehaviour
 		
 		if (collision.gameObject.tag == "Bullet")
 		{	
+            print("im dying");
             health = health - collision.gameObject.GetComponent<bullet>().damage;
             if(movingRight){
-                healthbar.position = new Vector3(healthbar.position.x-0.50f, healthbar.position.y,healthbar.position.z);
+                healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
+                print("jghuithwruyijh");
             }
             else{
                 healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
+                print("gioehgegiuqehgre");
             }
            
             if (health <= 0) {
