@@ -43,6 +43,9 @@ public class attack : MonoBehaviour
         weapons = new List<Gunner>();
         //knifeanimtion = knifeReal.GetComponent<Animator>();
         a = GetComponent<Animator>();
+        gun = PistolObj;
+        gun.SetActive(true);
+        currentWeapon = 0;
         Shotgun shot = new Shotgun();
         Pistol pistol = new Pistol();
         Machinegun machinegun = new Machinegun();
@@ -102,11 +105,6 @@ public class attack : MonoBehaviour
             spriteRenderer.flipX = true; // Face left (flip the sprite horizontally)
         }
         */
-        if (Input.GetKeyDown(KeyCode.Alpha1)){
-          //  knife = true;
-            //knifeReal.SetActive(true);
-            gun.SetActive(false);
-        }
         
         if (Input.GetKeyDown(KeyCode.Alpha2)){
             //knife = false;
