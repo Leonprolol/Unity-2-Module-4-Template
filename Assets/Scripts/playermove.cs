@@ -52,10 +52,10 @@ now run the animation , will solve your problem
             print(moveDirection);
             if (Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.LeftArrow) ) {
         
-                transform.GetChild(0).localScale = new Vector3(-0.75f, 0.75f, 1f);
+            //transform.GetChild(0).localScale = new Vector3(-0.75f, 0.75f, 1f);
             }
             else if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)){
-                transform.GetChild(0).localScale = new Vector3(0.75f, 0.75f, 1f);
+                //transform.GetChild(0).localScale = new Vector3(0.75f, 0.75f, 1f);
             }
             if (moveDirection > 0.4 || moveDirection < -0.4) {
                 a.SetBool("is running", true);

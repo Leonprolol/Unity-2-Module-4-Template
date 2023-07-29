@@ -75,11 +75,14 @@ public class attack : MonoBehaviour
         // Flip the character's sprite accordingly
         if (direction.x > 0f)
         {
-            GetComponent<SpriteRenderer>().flipX = false; // Face right (no flip)
+            transform.localScale = new Vector3(0.75f, 0.75f, 1f);
+         //   GetComponent<SpriteRenderer>().flipX = false; // Face right (no flip)
         }
         else if (direction.x < 0f)
         {
-            GetComponent<SpriteRenderer>().flipX = true; // Face left (flip the sprite horizontally)
+            transform.localScale = new Vector3(-0.75f, 0.75f, 1f);
+
+         //   GetComponent<SpriteRenderer>().flipX = true; // Face left (flip the sprite horizontally)
         }
        
         //worldPosition.z = 0f; // Assuming your character is on the 2D plane (z = 0)
