@@ -62,7 +62,25 @@ public class attack : MonoBehaviour
         square.position = new Vector3(worldPosition.x, worldPosition.y, 1);
         directions = square.position-firepoint.transform.position;
         
+        Vector3 mouseScreenPosition = Input.mousePosition;
 
+        // Convert the mouse position to world coordinates
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
+        mouseWorldPosition.z = 0f; // Assuming your character is on the 2D plane (z = 0)
+
+        // Compare the character's position with the mouse position to determine the direction
+        Vector3 characterPosition = transform.position;
+        Vector3 direction = mouseWorldPosition - characterPosition;
+
+        // Flip the character's sprite accordingly
+        if (direction.x > 0f)
+        {
+            GetComponent<SpriteRenderer>().flipX = false; // Face right (no flip)
+        }
+        else if (direction.x < 0f)
+        {
+            GetComponent<SpriteRenderer>().flipX = true; // Face left (flip the sprite horizontally)
+        }
        
         //worldPosition.z = 0f; // Assuming your character is on the 2D plane (z = 0)
 
