@@ -5,8 +5,10 @@ using UnityEngine;
 public class tracking : MonoBehaviour
 {
     private GameObject Player;
+    public Transform healthbar;
     public float Range = 10f;
     public float MoveSpeed = 5f;
+    public bool movingRight = true;
     private Vector3 oldPosition;
     private Rigidbody2D rb;
     public float health = 100;
@@ -23,6 +25,21 @@ public class tracking : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(transform.position, Player.transform.position);
+         float currentDistance = Mathf.Abs(distance);
+        // Flip the character's sprite accordingly
+        Vector3 direction = Player.transform.position - transform.position;
+        if (direction.x > 0f)
+        {
+            movingRight = false;
+            transform.localScale = new Vector3(0.75f, 0.75f, 1f);
+         //   GetComponent<SpriteRenderer>().flipX = false; // Face right (no flip)
+        }
+        else if (direction.x < 0f)
+        {
+            transform.localScale = new Vector3(-0.75f, 0.75f, 1f);
+            movingRight = true;
+         //   GetComponent<SpriteRenderer>().flipX = true; // Face left (flip the sprite horizontally)
+        }
         if(distance <= Range){
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, MoveSpeed * Time.deltaTime);
         }
@@ -44,6 +61,14 @@ public class tracking : MonoBehaviour
 		if (collision.gameObject.tag == "Bullet")
 		{	
             health = health - collision.gameObject.GetComponent<bullet>().damage;
+            if(movingRight){
+                healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
+                print("jghuithwruyijh");
+            }
+            else{
+                healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
+                print("gioehgegiuqehgre");
+            }
             if (health <= 0) {
                 Player.GetComponent<playermove>().coins += 5;
                 Destroy(gameObject);
@@ -58,9 +83,5 @@ public class tracking : MonoBehaviour
 
 
 	}
-
-    IEnumerator red() {
-        yield return new WaitForSeconds(0.25f);
-        m_SpriteRenderer.color = Color.white;
-    }
+ 
 }
