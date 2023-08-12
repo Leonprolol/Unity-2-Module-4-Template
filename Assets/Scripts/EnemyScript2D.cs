@@ -13,7 +13,7 @@ public class EnemyScript2D : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player").transform;
         timeSinceLastShot = shootingCooldown; // Start with cooldown expired to shoot immediately
     }
 

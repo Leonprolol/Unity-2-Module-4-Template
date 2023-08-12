@@ -83,5 +83,8 @@ public class tracking : MonoBehaviour
 
 
 	}
- 
+ IEnumerator red() {
+        yield return new WaitForSeconds(0.25f);
+        m_SpriteRenderer.color = Color.white;
+    }
 }

@@ -77,7 +77,7 @@ public class FlyingEnemy : MonoBehaviour
             }
             */
             if (health <= 0) {
-                Player.GetComponent<playermove>().coins += 5;
+                //Player.GetComponent<playermove>().coins += 5;
                 Destroy(gameObject);
 
             }
@@ -86,8 +86,7 @@ public class FlyingEnemy : MonoBehaviour
             m_SpriteRenderer.color = Color.red;
             StartCoroutine(red());
 		}  
-        Destroy(collision.gameObject);
-
+        
 
 	}
 
