@@ -60,14 +60,15 @@ public class EnemyScript2D : MonoBehaviour
 		{	
             print("im dying");
             health = health - collision.gameObject.GetComponent<bullet>().damage;
-            if(movingRight){
-                healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
-                print("jghuithwruyijh");
-            }
-            else{
-                healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
-                print("gioehgegiuqehgre");
-            }
+            // if(movingRight){
+            //     healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
+            //     print("jghuithwruyijh");
+            // }
+            // else{
+            //     healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
+            //     print("gioehgegiuqehgre");
+            // }
+	    healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
            
             if (health <= 0) {
                 player.gameObject.GetComponent<playermove>().coins += 5;
