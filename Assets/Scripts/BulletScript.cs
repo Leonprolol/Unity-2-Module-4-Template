@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.right * speed;
+
         Destroy(gameObject, lifetime);
     }
 
