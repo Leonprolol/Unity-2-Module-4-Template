@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class EnemyScript2D : MonoBehaviour
 {
-    private Transform player;
+    public Transform player;
     public float trackingSpeed = 3f;
     public float shootingCooldown = 2f;
+    public float detectionRange = 10f; // The range at which the enemy detects the player
     public GameObject bulletPrefab;
     public Transform shootPoint;
 
@@ -13,14 +14,13 @@ public class EnemyScript2D : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player").transform;
         timeSinceLastShot = shootingCooldown; // Start with cooldown expired to shoot immediately
     }
 
     private void Update()
     {
-        // Check if the player is in sight
-        if (player != null)
+        // Check if the player is within detection range
+        if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
         {
             // Calculate direction to the player
             Vector2 directionToPlayer = player.position - transform.position;
