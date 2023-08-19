@@ -9,6 +9,8 @@ public class EnemyScript2D : MonoBehaviour
     public float detectionRange = 10f; // The range at which the enemy detects the player
     public GameObject bulletPrefab;
     public Transform shootPoint;
+    public float health = 100;
+    public Transform healthbar;
 
     private float timeSinceLastShot;
 
@@ -48,5 +50,41 @@ public class EnemyScript2D : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
             // Add any additional logic to configure the bullet's behavior here
         }
+    }
+
+    SpriteRenderer m_SpriteRenderer;
+    void OnTriggerEnter2D(Collider2D collision)
+	{
+		
+		if (collision.gameObject.tag == "Bullet")
+		{	
+            print("im dying");
+            health = health - collision.gameObject.GetComponent<bullet>().damage;
+            if(movingRight){
+                healthbar.position = new Vector3(healthbar.position.x-0.5f, healthbar.position.y,healthbar.position.z);
+                print("jghuithwruyijh");
+            }
+            else{
+                healthbar.position = new Vector3(healthbar.position.x+0.50f, healthbar.position.y,healthbar.position.z);
+                print("gioehgegiuqehgre");
+            }
+           
+            if (health <= 0) {
+                Player.GetComponent<playermove>().coins += 5;
+
+                Destroy(gameObject);
+            }
+            m_SpriteRenderer = GetComponent<SpriteRenderer>();
+            //Set the GameObject's Color quickly to a set Color (blue)
+            m_SpriteRenderer.color = Color.red;
+            StartCoroutine(red());
+		}  
+        Destroy(collision.gameObject);
+
+	}
+
+    IEnumerator red() {
+        yield return new WaitForSeconds(0.25f);
+        m_SpriteRenderer.color = Color.white;
     }
 }
