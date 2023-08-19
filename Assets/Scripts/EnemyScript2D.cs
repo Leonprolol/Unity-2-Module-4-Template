@@ -70,7 +70,7 @@ public class EnemyScript2D : MonoBehaviour
             }
            
             if (health <= 0) {
-                Player.GetComponent<playermove>().coins += 5;
+                player.gameObject.GetComponent<playermove>().coins += 5;
 
                 Destroy(gameObject);
             }
