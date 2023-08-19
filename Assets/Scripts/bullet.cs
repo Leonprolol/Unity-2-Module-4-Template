@@ -25,6 +25,15 @@ public class bullet : MonoBehaviour
 		damage = newDam;
 	}
 
+	 private void Update()
+	    {
+		// Destroy the bullet when it's out of bounds
+		if (!GetComponent<Renderer>().isVisible)
+		{
+		    Destroy(gameObject);
+		}
+	    }
+
 	public void setSpread() {
 		spread = true;
 	}
