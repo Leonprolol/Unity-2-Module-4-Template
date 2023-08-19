@@ -18,14 +18,6 @@ public class BulletScript : MonoBehaviour
         //Destroy(gameObject, lifetime);
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (!other.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-        }
-    }
-
     void Update()
     {
         // Move the bullet forward
