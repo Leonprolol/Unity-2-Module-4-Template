@@ -5,6 +5,8 @@ public class BossEnemy : MonoBehaviour
 {
     public Transform player; // Reference to the player's transform
     public float moveSpeed = 5f;
+    public float lowerBound;
+    public float upperBound; 
     public GameObject slowBeamPrefab;
     public GameObject bunchOfBeamsPrefab;
     
@@ -28,7 +30,7 @@ public class BossEnemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(2f, 4f)); // Time between attacks
+            yield return new WaitForSeconds(Random.Range(lowerBound, upperBound)); // Time between attacks
             if (!isAttacking)
             {
                 currentAttack = (AttackPattern)Random.Range(1, 4);
