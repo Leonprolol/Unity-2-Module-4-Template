@@ -52,6 +52,8 @@ public class BossEnemy : MonoBehaviour
                 break;
             case AttackPattern.SlowBeamAttack:
                 SlowBeamAttack();
+                yield return new WaitForSeconds(5f); // Time to complete attack
+
                 break;
             case AttackPattern.BunchOfBeamsAttack:
                 BunchOfBeamsAttack();
