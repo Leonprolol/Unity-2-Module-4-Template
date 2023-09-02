@@ -9,6 +9,8 @@ public class BossEnemy : MonoBehaviour
     public float upperBound; 
     public GameObject slowBeamPrefab;
     public GameObject bunchOfBeamsPrefab;
+    public Transform SlowBeamFirepoint;
+    public Transform BunchofBeamsFirepoint;
     
     private enum AttackPattern
     {
@@ -71,7 +73,7 @@ public class BossEnemy : MonoBehaviour
     private void SlowBeamAttack()
     {
         print("I am preforming a Slow Beam Attack");
-        GameObject slowBeam = Instantiate(slowBeamPrefab, transform.position, Quaternion.identity);
+        GameObject slowBeam = Instantiate(slowBeamPrefab, SlowBeamFirepoint.position, Quaternion.identity);
         SlowBeamController beamController = slowBeam.GetComponent<SlowBeamController>();
         beamController.SetTarget(player);
     }
@@ -86,7 +88,7 @@ public class BossEnemy : MonoBehaviour
         for (int i = 0; i < numBeams; i++)
         {
             Quaternion rotation = Quaternion.Euler(0f, i * angleStep, 0f);
-            Instantiate(bunchOfBeamsPrefab, transform.position, rotation);
+            Instantiate(bunchOfBeamsPrefab, BunchofBeamsFirepoint.position, rotation);
         }
     }
 }
