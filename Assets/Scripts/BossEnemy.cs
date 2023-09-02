@@ -63,12 +63,14 @@ public class BossEnemy : MonoBehaviour
 
     private void RunAttack()
     {
+        print("I am preforming a Running Attack");
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
         transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime);
     }
 
     private void SlowBeamAttack()
     {
+        print("I am preforming a Slow Beam Attack");
         GameObject slowBeam = Instantiate(slowBeamPrefab, transform.position, Quaternion.identity);
         SlowBeamController beamController = slowBeam.GetComponent<SlowBeamController>();
         beamController.SetTarget(player);
@@ -76,6 +78,8 @@ public class BossEnemy : MonoBehaviour
 
     private void BunchOfBeamsAttack()
     {
+        print("I am preforming a Bunch of Beams Attack");
+
         int numBeams = 5;
         float angleStep = 360f / numBeams;
 
