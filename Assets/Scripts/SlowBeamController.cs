@@ -30,11 +30,7 @@ public class SlowBeamController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damageAmount);
-            }
+          
             
             Destroy(gameObject); // Destroy the beam upon collision
         }

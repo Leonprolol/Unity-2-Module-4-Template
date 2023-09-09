@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class HomingProjectile : MonoBehaviour
+public class HomingProjectile2D : MonoBehaviour
 {
-    private Transform target; // The target to home in on (e.g., the player)
+    public Transform target; // The target to home in on (e.g., the player)
     public float homingSpeed = 5f; // The speed at which the projectile homes in on the target
     public float rotationSpeed = 200f; // The speed at which the projectile rotates to face the target
-    void Start() {
-        target = GameObject.Find("player").transform;
-        print(target);
+
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = transform.up * homingSpeed; // Set the initial velocity in the forward direction.
     }
+
     private void Update()
     {
         if (target == null)
         {
-            // If the target is lost or destroyed, just move forward
-            transform.Translate(Vector2.up * homingSpeed * Time.deltaTime);
-            return;
+            return; // No target to home in on, so no further action needed.
         }
 
         // Calculate the direction to the target
@@ -26,10 +29,10 @@ public class HomingProjectile : MonoBehaviour
 
         // Rotate the projectile towards the target
         Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        rb.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime));
 
-        // Move the projectile forward in the direction of the target
-        transform.Translate(Vector2.up * homingSpeed * Time.deltaTime);
+        // Continue moving the projectile forward
+        rb.velocity = transform.up * homingSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,6 +45,5 @@ public class HomingProjectile : MonoBehaviour
             // Destroy the projectile upon hitting the target
             Destroy(gameObject);
         }
-
     }
 }

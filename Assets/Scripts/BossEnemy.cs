@@ -12,7 +12,7 @@ public class BossEnemy : MonoBehaviour
     public GameObject bunchOfBeamsPrefab;
     public Transform SlowBeamFirepoint;
     public Transform BunchofBeamsFirepoint;
-    public RigidBody2D rb;
+    public Rigidbody2D rb;
     
     private enum AttackPattern
     {

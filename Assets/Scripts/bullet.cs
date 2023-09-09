@@ -39,8 +39,6 @@ public class bullet : MonoBehaviour
 	}
 
 	public void fire(Vector3 direction){
-		print(direction);
-		print(direction.normalized);
 		GetComponent<Rigidbody2D>().velocity = direction.normalized *50;
 	}
 	
