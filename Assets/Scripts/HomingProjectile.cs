@@ -6,7 +6,8 @@ public class HomingProjectile : MonoBehaviour
     public float homingSpeed = 5f; // The speed at which the projectile homes in on the target
     public float rotationSpeed = 200f; // The speed at which the projectile rotates to face the target
     void Start() {
-        target = GameObject.Find("Player").transform;
+        target = GameObject.Find("player").transform;
+        print(target);
     }
     private void Update()
     {
@@ -41,7 +42,6 @@ public class HomingProjectile : MonoBehaviour
             // Destroy the projectile upon hitting the target
             Destroy(gameObject);
         }
-        Destroy(gameObject);
 
     }
 }
