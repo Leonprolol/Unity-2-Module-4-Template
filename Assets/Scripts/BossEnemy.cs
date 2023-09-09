@@ -12,6 +12,7 @@ public class BossEnemy : MonoBehaviour
     public GameObject bunchOfBeamsPrefab;
     public Transform SlowBeamFirepoint;
     public Transform BunchofBeamsFirepoint;
+    public RigidBody2D rb;
     
     private enum AttackPattern
     {
@@ -71,9 +72,8 @@ public class BossEnemy : MonoBehaviour
 
     private void RunAttack()
     {
-        print("I am preforming a Running Attack");
         Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        transform.Translate(directionToPlayer * moveSpeed * Time.deltaTime);
+        rb.velocity = directionToPlayer * moveSpeed;
     }
 
     private void SlowBeamAttack()
