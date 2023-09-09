@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class HomingProjectile : MonoBehaviour
 {
-    public Transform target; // The target to home in on (e.g., the player)
+    private Transform target; // The target to home in on (e.g., the player)
     public float homingSpeed = 5f; // The speed at which the projectile homes in on the target
     public float rotationSpeed = 200f; // The speed at which the projectile rotates to face the target
-
+    void Start() {
+        target = GameObject.Find("Player");
+    }
     private void Update()
     {
         if (target == null)
