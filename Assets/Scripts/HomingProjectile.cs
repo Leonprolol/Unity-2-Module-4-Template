@@ -39,5 +39,7 @@ public class HomingProjectile : MonoBehaviour
             // Destroy the projectile upon hitting the target
             Destroy(gameObject);
         }
+        Destroy(gameObject);
+
     }
 }
