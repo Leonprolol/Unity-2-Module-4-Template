@@ -6,6 +6,7 @@ public class BossEnemy : MonoBehaviour
     public Transform player; // Reference to the player's transform
     public float moveSpeed = 5f;
     public float lowerBound;
+    public float attackRange = 10f; // The range at which the boss can attack
     public float upperBound; 
     public GameObject slowBeamPrefab;
     public GameObject bunchOfBeamsPrefab;
@@ -32,12 +33,15 @@ public class BossEnemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(lowerBound, upperBound)); // Time between attacks
-            if (!isAttacking)
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= attackRange && !isAttacking)
             {
                 currentAttack = (AttackPattern)Random.Range(1, 4);
                 StartCoroutine(ExecuteAttack());
             }
+
+            yield return new WaitForSeconds(Random.Range(lowerBound, upperBound)); // Time between attacks
         }
     }
 
