@@ -17,17 +17,19 @@ public class BossEnemy : MonoBehaviour
     private enum AttackPattern
     {
         None,
-        RunAttack,
         SlowBeamAttack,
-        BunchOfBeamsAttack
+        BunchOfBeamsAttack,
+        Move
     }
     
-    private AttackPattern currentAttack = AttackPattern.None;
+    private AttackPattern currentAttack = AttackPattern.BunchOfBeamsAttack;
     private bool isAttacking = false;
 
     private void Start()
     {
         StartCoroutine(AttackLoop());
+
+        startPosition = transform.position;
     }
 
     private IEnumerator AttackLoop()
@@ -46,23 +48,77 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
+
+    public float speed = 20f;
+    public float distance = 5f;
+
+    private Vector3 startPosition;
+    private bool movingRight = true;
+    
+    public float health = 100;
+    public Transform healthbar;
+    public bool isMoving = false;
+    public bool isShooting = false;
+    public float slowBeamSpeed;
+    void Update()
+    {
+        if (isMoving) {
+                 Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
+                transform.Translate(directionToPlayer * speed * Time.deltaTime);
+        }
+       
+   
+    }
+
+    void LateUpdate() {
+ if(isShooting) {
+            GameObject slowBeam = Instantiate(slowBeamPrefab, SlowBeamFirepoint.position, Quaternion.identity);
+            Strech(slowBeam, SlowBeamFirepoint.position, player.transform.position, false);
+        }
+    }
+
+
+	public void Strech(GameObject _sprite,Vector3 _initialPosition, Vector3 _finalPosition, bool _mirrorZ) {
+		Vector3 centerPos = (_initialPosition + _finalPosition) / 2f;
+		_sprite.transform.position = centerPos;
+		Vector3 direction = _finalPosition - _initialPosition;
+		direction = Vector3.Normalize(direction);
+		_sprite.transform.right = direction;
+		if (_mirrorZ) _sprite.transform.right *= -1f;
+		Vector3 scale = new Vector3(1,1,1);
+		scale.x = Vector3.Distance(_initialPosition, _finalPosition);
+		_sprite.transform.localScale = scale * slowBeamSpeed * Time.deltaTime;
+	}
+
     private IEnumerator ExecuteAttack()
     {
         isAttacking = true;
 
         switch (currentAttack)
         {
-            case AttackPattern.RunAttack:
-                RunAttack();
-                break;
+           
             case AttackPattern.SlowBeamAttack:
-                SlowBeamAttack();
+                print("preforming A SlowbeamAttac");
+                isShooting = true;
+                //SlowBeamAttack();
                 yield return new WaitForSeconds(5f); // Time to complete attack
-
+                isShooting = false;
                 break;
+                
             case AttackPattern.BunchOfBeamsAttack:
-                BunchOfBeamsAttack();
+                StartCoroutine(BunchOfBeamsAttack());
+                yield return new WaitForSeconds(5f);
                 break;
+            case AttackPattern.Move:
+                print("preforming A Move");
+                isMoving=true;
+                yield return new WaitForSeconds(1f); // Time to complete attack
+                isMoving = false;
+                break;
+            case AttackPattern.None:
+                print("preforming A None");
+                break;
+                
         }
 
         yield return new WaitForSeconds(3f); // Time to complete attack
@@ -70,11 +126,14 @@ public class BossEnemy : MonoBehaviour
         currentAttack = AttackPattern.None;
     }
 
-    private void RunAttack()
+    public void Move()
     {
-        Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        rb.velocity = directionToPlayer * moveSpeed;
+       
+        // Move in the current direction
+       
     }
+
+ 
 
     private void SlowBeamAttack()
     {
@@ -84,7 +143,7 @@ public class BossEnemy : MonoBehaviour
         beamController.SetTarget(player);
     }
 
-    private void BunchOfBeamsAttack()
+    private IEnumerator BunchOfBeamsAttack()
     {
         print("I am preforming a Bunch of Beams Attack");
 
@@ -94,7 +153,10 @@ public class BossEnemy : MonoBehaviour
         for (int i = 0; i < numBeams; i++)
         {
             Quaternion rotation = Quaternion.Euler(0f, i * angleStep, 0f);
-            Instantiate(bunchOfBeamsPrefab, BunchofBeamsFirepoint.position, rotation);
+            GameObject x = Instantiate(bunchOfBeamsPrefab, BunchofBeamsFirepoint.position, Quaternion.identity);
+            x.GetComponent<HomingProjectile2D>().speed = (i + 1) * 2;
+            yield return new WaitForSeconds(1f);
+            
         }
     }
 }

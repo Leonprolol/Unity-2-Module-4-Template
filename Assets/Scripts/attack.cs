@@ -172,7 +172,7 @@ public class attack : MonoBehaviour
      if (Input.GetKeyDown(KeyCode.R) && knife == false) {
         weapons[currentWeapon].ammo = 100;
      }
-      ammoText.GetComponent<TextMeshProUGUI>().text = "Ammo:" + weapons[currentWeapon].ammo.ToString();
+       ammoText.GetComponent<TextMeshProUGUI>().text = "Ammo:" + weapons[currentWeapon].ammo.ToString();
 
     }
 

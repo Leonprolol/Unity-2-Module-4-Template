@@ -9,6 +9,7 @@ public class BunchOfBeams : MonoBehaviour
 
     private void Start()
     {
+        Destroy(this, 3f);
         FireBeams();
     }
 
