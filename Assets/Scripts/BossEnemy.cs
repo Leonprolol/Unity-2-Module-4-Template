@@ -80,7 +80,7 @@ public class BossEnemy : MonoBehaviour
      
         if(storedPositions.Count > followDistance)
         {
-            playerPos = storedPositions[0]; //move the player
+            playerPos = storedPositions[storedPositions.Count-1]; //move the player
             storedPositions.RemoveAt (0); //delete the position that player just move to
         }
         if (health <= 0) {
