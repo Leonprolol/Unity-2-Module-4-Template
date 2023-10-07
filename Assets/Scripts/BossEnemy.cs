@@ -32,7 +32,6 @@ public class BossEnemy : MonoBehaviour
     private void Start()
     {
         StartCoroutine(AttackLoop());
-        playerPos =  player.transform.position;
         startPosition = transform.position;
     }
 
