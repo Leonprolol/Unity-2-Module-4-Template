@@ -49,7 +49,6 @@ public class HomingProjectile2D : MonoBehaviour
         }
         else {
             
-            this.gameObject.SetActive(false);
             print("I've hit something");
             if (other.gameObject.tag == "Bullet"){
                 print("working");

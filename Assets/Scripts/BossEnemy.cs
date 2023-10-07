@@ -83,6 +83,9 @@ public class BossEnemy : MonoBehaviour
             playerPos = storedPositions[0]; //move the player
             storedPositions.RemoveAt (0); //delete the position that player just move to
         }
+        if (health <= 0) {
+            Destroy(this.gameObject);
+        }
    
     }
 
@@ -145,6 +148,20 @@ public class BossEnemy : MonoBehaviour
         // Move in the current direction
        
     }
+
+    
+     private void OnTriggerEnter2D(Collider2D other)
+    {
+   
+        if (other.gameObject.tag == "Bullet") {
+            health = health - 1;
+        }
+        
+    
+        
+    }
+
+
 
  
 
