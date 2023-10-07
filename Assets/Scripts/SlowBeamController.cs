@@ -32,7 +32,6 @@ public class SlowBeamController : MonoBehaviour
         {
           
             
-            Destroy(gameObject); // Destroy the beam upon collision
         }
     }
 }

@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 75452972}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: slow beam fire point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75452971}
   m_LocalRotation: {x: 0, y: -0, z: -0.008482556, w: 0.99996406}
-  m_LocalPosition: {x: -0.54581976, y: 2.0195506, z: -0.08753222}
+  m_LocalPosition: {x: -3.62, y: 2.0195506, z: -0.08753222}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12885,6 +12885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1441302475370568316, guid: c8a06e9390db64f599e105539b1900a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4985611886608138363, guid: c8a06e9390db64f599e105539b1900a8, type: 3}
       propertyPath: player
       value: 
@@ -13332,9 +13336,9 @@ GameObject:
   - component: {fileID: 1671604506}
   - component: {fileID: 1671604507}
   - component: {fileID: 1671604508}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: boss 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13429,11 +13433,15 @@ MonoBehaviour:
   bunchOfBeamsPrefab: {fileID: 5986354849881452273, guid: b791566e079f54a96a36731f1108ff6d, type: 3}
   SlowBeamFirepoint: {fileID: 75452972}
   BunchofBeamsFirepoint: {fileID: 1995053561}
-  rb: {fileID: 1671604508}
+  rb: {fileID: 0}
   speed: 2
   distance: 5
   health: 100
   healthbar: {fileID: 0}
+  isMoving: 0
+  isShooting: 0
+  slowBeamSpeed: 0
+  followDistance: 90
 --- !u!61 &1671604507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13447,7 +13455,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.48069763}
+  m_Offset: {x: 0, y: -3.1248693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13458,29 +13466,20 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.8, y: 7.2713947}
+  m_Size: {x: 5.8, y: 1.9830513}
   m_EdgeRadius: 0
---- !u!50 &1671604508
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &1671604508
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671604503}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 20
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05c63db716bd4665a9edc8ebcd3b306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1684709011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13609,7 +13608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1995053561}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: the other beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

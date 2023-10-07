@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class BossEnemy : MonoBehaviour
 {
@@ -24,11 +26,13 @@ public class BossEnemy : MonoBehaviour
     
     private AttackPattern currentAttack = AttackPattern.BunchOfBeamsAttack;
     private bool isAttacking = false;
+    private List<Vector3> storedPositions = new List<Vector3>();
+
 
     private void Start()
     {
         StartCoroutine(AttackLoop());
-
+        playerPos =  player.transform.position;
         startPosition = transform.position;
     }
 
@@ -60,22 +64,30 @@ public class BossEnemy : MonoBehaviour
     public bool isMoving = false;
     public bool isShooting = false;
     public float slowBeamSpeed;
+    Vector3 playerPos;
+        public int followDistance = 90;
+
     void Update()
     {
         if (isMoving) {
                  Vector2 directionToPlayer = (player.transform.position - transform.position).normalized;
                 transform.Translate(directionToPlayer * speed * Time.deltaTime);
         }
-       
+       if(isShooting) {
+            GameObject slowBeam = Instantiate(slowBeamPrefab, SlowBeamFirepoint.position, Quaternion.identity);
+            Strech(slowBeam, SlowBeamFirepoint.position, playerPos, false);
+        }
+        storedPositions.Add(player.transform.position); //store the position every frame
+     
+        if(storedPositions.Count > followDistance)
+        {
+            playerPos = storedPositions[0]; //move the player
+            storedPositions.RemoveAt (0); //delete the position that player just move to
+        }
    
     }
 
-    void LateUpdate() {
- if(isShooting) {
-            GameObject slowBeam = Instantiate(slowBeamPrefab, SlowBeamFirepoint.position, Quaternion.identity);
-            Strech(slowBeam, SlowBeamFirepoint.position, player.transform.position, false);
-        }
-    }
+   
 
 
 	public void Strech(GameObject _sprite,Vector3 _initialPosition, Vector3 _finalPosition, bool _mirrorZ) {
@@ -87,7 +99,10 @@ public class BossEnemy : MonoBehaviour
 		if (_mirrorZ) _sprite.transform.right *= -1f;
 		Vector3 scale = new Vector3(1,1,1);
 		scale.x = Vector3.Distance(_initialPosition, _finalPosition);
-		_sprite.transform.localScale = scale * slowBeamSpeed * Time.deltaTime;
+        _sprite.GetComponent<PolygonCollider2D>().points[0] = new Vector2(_initialPosition.x, _initialPosition.y);
+        _sprite.GetComponent<PolygonCollider2D>().points[1] = new Vector2(_finalPosition.x, _finalPosition.y);
+
+		_sprite.transform.localScale = scale;
 	}
 
     private IEnumerator ExecuteAttack()
@@ -105,12 +120,11 @@ public class BossEnemy : MonoBehaviour
                 isShooting = false;
                 break;
                 
-            case AttackPattern.BunchOfBeamsAttack:
+            case AttackPattern.BunchOfBeamsAttack:        
                 StartCoroutine(BunchOfBeamsAttack());
                 yield return new WaitForSeconds(5f);
                 break;
-            case AttackPattern.Move:
-                print("preforming A Move");
+            case AttackPattern.Move:    
                 isMoving=true;
                 yield return new WaitForSeconds(1f); // Time to complete attack
                 isMoving = false;

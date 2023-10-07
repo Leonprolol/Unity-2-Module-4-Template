@@ -14,7 +14,7 @@ public class HomingProjectile2D : MonoBehaviour
         target = GameObject.Find("Player").transform;
         print(target);
         rb = GetComponent<Rigidbody2D>();
-        Destroy(this, 3.5f);
+        Destroy(this.gameObject, 3.5f);
     }
 
     private void Update()
@@ -22,7 +22,7 @@ public class HomingProjectile2D : MonoBehaviour
         if (target != null)
         {
             Vector2 direction = (target.position - transform.position).normalized;
-
+            transform.right = target.position - transform.position;
             // Calculate the angle to rotate towards the target
             /*
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -43,19 +43,21 @@ public class HomingProjectile2D : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        print("I've hit something");
-        print(other.gameObject.tag);
-        if (other.gameObject.tag == "Bullet")
-        {
-            // Handle what happens when the projectile hits the target (e.g., deal damage)
-            // You can add your custom logic here.
-
-            // Destroy the projectile upon hitting the target
-            Destroy(gameObject);
+   
+        if (other.gameObject.tag == "Enemy") {
+            return;
         }
-        if (other.gameObject.tag != "Enemy" || other.gameObject.tag != "Player"){
-            Destroy(gameObject);
+        else {
+            
+            this.gameObject.SetActive(false);
+            print("I've hit something");
+            if (other.gameObject.tag == "Bullet"){
+                print("working");
+            }
+            print(other.gameObject.tag);
+            Destroy(this.gameObject);
         }
+    
         
     }
 }

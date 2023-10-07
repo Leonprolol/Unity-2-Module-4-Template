@@ -69,7 +69,7 @@ now run the animation , will solve your problem
         
             if (Input.GetKeyDown(KeyCode.Space)&& onGround == true && jumped == false)
             {
-                rb.AddForce(new Vector2(0f,100f));
+                rb.AddForce(new Vector2(0f,150f));
                //  a.SetBool("is jumping", true); //NEEds to be 30 frames half a second
                 StartCoroutine(jumpCool());
              }
@@ -130,7 +130,6 @@ now run the animation , will solve your problem
     }
 
     public void OnTriggerEnter2D(Collider2D col) {
-        print("Hello");
         if (col.gameObject.tag == "Ground") 
         {
             onGround = true;
@@ -138,7 +137,6 @@ now run the animation , will solve your problem
     }
 
     public void OnTriggerStay2D(Collider2D col) {
-        print("Hello");
         if (col.gameObject.tag == "Ground") 
         {
             onGround = true;
@@ -146,7 +144,6 @@ now run the animation , will solve your problem
     }
 
     public void OnTriggerExit2D(Collider2D col) {
-        print("GOODBYEZ");
     if (col.gameObject.tag == "Ground") 
         {
             onGround = false;
