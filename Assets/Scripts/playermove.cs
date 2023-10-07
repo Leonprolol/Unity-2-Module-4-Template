@@ -8,7 +8,7 @@ public class playermove : MonoBehaviour
 {
     private float moveDirection;
     public Rigidbody2D rb;
-    
+    public bool isDead = false;
     private bool facingRight = true;
     private bool isJumping = false;
     public bool onGround = true;
